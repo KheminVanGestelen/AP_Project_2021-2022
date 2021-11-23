@@ -5,8 +5,11 @@
 #ifndef AP_PROJECT_2021_2022_ENTITY_H
 #define AP_PROJECT_2021_2022_ENTITY_H
 
+using namespace std;
 
 class Entity {
+
+    
 
 };
 
