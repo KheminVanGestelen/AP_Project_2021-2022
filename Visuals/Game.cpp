@@ -4,18 +4,21 @@
 
 #include "Game.h"
 
-Game::Game() : mainWindow(sf::VideoMode(640, 480), "JUMP!"), timePerFrame(1000/60), player(){
-    player.setRadius(10.f);
-    player.setPosition(100.f, 100.f);
-    player.setFillColor(sf::Color::Red);
+Game::Game() : mainWindow(sf::VideoMode(500, 500) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())) {
+    Camera cam = Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y);
+    world = World(factory, cam);
+    world.initializePlayer();
+    world.initializePlatforms();
+    timePerFrame = 1000/60;
 }
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool pressed) {
-    if(key == sf::Keyboard::Q)
-        pIsMovingLeft = pressed;
-    if(key == sf::Keyboard::D)
-        pIsMovingRight = pressed;
-
+    if(key == sf::Keyboard::Q) {
+        world.player.setMovingLeft(pressed);
+    }
+    if(key == sf::Keyboard::D) {
+        world.player.setMovingRight(pressed);
+    }
 }
 
 void Game::processEvents() {
@@ -35,29 +38,37 @@ void Game::processEvents() {
     }
 }
 
-void Game::update() {
-    sf::Vector2f movement(0.f, 0.f);
-    if (pIsMovingLeft)
-        movement.x -= 5.f;
-    if (pIsMovingRight)
-        movement.x += 5.f;
+void Game::updateSpriteCoord() {
+    world.player.view.setSpritePos(world.camera.getWindowCoord(world.player));
+    for (Platform& pl : world.platforms){
+        pl.view.setSpritePos(world.camera.getWindowCoord(pl));
+    }
+}
 
-    player.move(movement);
+
+void Game::update() {
+    world.update();
 }
 
 void Game::render() {
+    updateSpriteCoord();
+
     mainWindow.clear();
-    mainWindow.draw(player);
+    for (const Platform& pl : world.platforms){
+        if (pl.isVisible())
+            mainWindow.draw(pl.view.sprite);
+    }
+    mainWindow.draw(world.player.view.sprite);
     mainWindow.display();
 }
 
 void Game::run() {
-    Stopwatch clock;
+    shared_ptr<Stopwatch> clock = Stopwatch::getInstance();
     long long int timeSinceUpdate = 0;
 
     while (mainWindow.isOpen()) {
         processEvents();
-        timeSinceUpdate += clock.reset();
+        timeSinceUpdate += clock->reset();
         while (timeSinceUpdate > timePerFrame) {
             timeSinceUpdate -= timePerFrame;
             processEvents();

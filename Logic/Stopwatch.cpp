@@ -4,29 +4,35 @@
 
 #include "Stopwatch.h"
 
-Stopwatch::Stopwatch() : start(chrono::steady_clock::now()){}
+Stopwatch::Stopwatch() : start(std::chrono::steady_clock::now()){}
+
+std::shared_ptr<Stopwatch> Stopwatch::getInstance() {
+    if (instance == nullptr)
+        instance = std::make_shared<Stopwatch>(Stopwatch());
+    return instance;
+}
 
 long long int Stopwatch::timeInSeconds() {
-    auto now = chrono::steady_clock::now();
+    auto now = std::chrono::steady_clock::now();
 
-    return chrono::duration_cast<chrono::seconds>(now - start).count();
+    return std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
 }
 
 long long int Stopwatch::timeInMilliseconds() {
-    auto now = chrono::steady_clock::now();
+    auto now = std::chrono::steady_clock::now();
 
-    return chrono::duration_cast<chrono::milliseconds>(now - start).count();
+    return std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count();
 }
 
 long long int Stopwatch::timeInMicroseconds() {
-    auto now = chrono::steady_clock::now();
+    auto now = std::chrono::steady_clock::now();
 
-    return chrono::duration_cast<chrono::microseconds>(now - start).count();
+    return std::chrono::duration_cast<std::chrono::microseconds>(now - start).count();
 }
 
 long long int Stopwatch::reset() {
     long long int temp = this->timeInMilliseconds();
 
-    start = chrono::steady_clock::now();
+    start = std::chrono::steady_clock::now();
     return temp;
 }

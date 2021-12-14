@@ -6,15 +6,17 @@
 #define AP_PROJECT_2021_2022_STOPWATCH_H
 
 #include <chrono>
-
-using namespace std;
+#include <memory>
 
 class Stopwatch {
+    static std::shared_ptr<Stopwatch> instance;
 
     std::chrono::time_point<std::chrono::steady_clock> start;
+    Stopwatch();
 
 public:
-    Stopwatch();
+    static std::shared_ptr<Stopwatch> getInstance();
+
     long long int timeInSeconds();
     long long int timeInMilliseconds();
     long long int timeInMicroseconds();

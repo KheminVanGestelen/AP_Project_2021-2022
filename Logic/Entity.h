@@ -5,8 +5,23 @@
 #ifndef AP_PROJECT_2021_2022_ENTITY_H
 #define AP_PROJECT_2021_2022_ENTITY_H
 
-class Entity {
+#include <utility>
 
+class Entity {
+    float x;
+    float y;
+    float width;
+    float height;
+public:
+    Entity(float x, float y, float w, float h);
+
+    float X() const;
+    float Y() const;
+    float getWidth() const;
+    float getHeight() const;
+
+    void setX(float i);
+    void setY(float i);
 };
 
 

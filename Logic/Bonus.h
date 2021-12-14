@@ -5,10 +5,9 @@
 #ifndef AP_PROJECT_2021_2022_BONUS_H
 #define AP_PROJECT_2021_2022_BONUS_H
 
-
 #include "Entity.h"
 
-class Bonus : Entity {
+class Bonus : public Entity {
 
 };
 
