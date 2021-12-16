@@ -16,9 +16,9 @@ Player::Player() : Entity(0.0, 0.0, 1.0, 1.0){
 }
 
 Player::Player(float x, float y, float w, float h, PlayerView  pView) : Entity(x, y, w, h), view(std::move(pView)){
-    xSpeed = 3.5;
+    xSpeed = 4.0;
     ySpeed = 0.0;
-    baseYSpeed = 7.0;
+    baseYSpeed = 8.5;
 
     movingLeft = false;
     movingRight = false;
@@ -46,11 +46,6 @@ float Player::getYSpeed() const {
 
 void Player::setYSpeed(float f) {
     ySpeed = f;
-}
-
-void Player::move(Vector2D m) {
-    this->setX(this->X() + m.X());
-    this->setY(this->Y() + m.Y());
 }
 
 void Player::jump() {

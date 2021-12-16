@@ -6,6 +6,7 @@
 #define AP_PROJECT_2021_2022_ENTITY_H
 
 #include <utility>
+#include "Vector2D.h"
 
 class Entity {
     float x;
@@ -22,6 +23,8 @@ public:
 
     void setX(float i);
     void setY(float i);
+
+    void move(Vector2D m);
 };
 
 

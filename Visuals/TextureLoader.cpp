@@ -24,6 +24,24 @@ TextureLoader::TextureLoader() {
         std::cerr << "Could not load bonus texture" << std::endl;
     else
         textureMap["Bonus"] = bonusTexture;
+
+    sf::Texture backgroundTexture;
+    if (!backgroundTexture.loadFromFile("Assets/Background.png"))
+        std::cerr << "Could not load background texture" << std::endl;
+    else
+        textureMap["Background"] = backgroundTexture;
+
+    sf::Texture starsFarTexture;
+    if (!starsFarTexture.loadFromFile("Assets/StarsFar.png"))
+        std::cerr << "Could not load texture for far stars" << std::endl;
+    else
+        textureMap["StarsFar"] = starsFarTexture;
+
+    sf::Texture starsCloseTexture;
+    if (!starsCloseTexture.loadFromFile("Assets/StarsClose.png"))
+        std::cerr << "Could not load texture for close stars " << std::endl;
+    else
+        textureMap["StarsClose"] = starsCloseTexture;
 }
 
 std::shared_ptr<TextureLoader> TextureLoader::getInstance() {

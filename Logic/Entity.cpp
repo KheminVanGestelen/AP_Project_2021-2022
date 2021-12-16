@@ -29,3 +29,8 @@ void Entity::setX(float i) {
 void Entity::setY(float i) {
     y = i;
 }
+
+void Entity::move(Vector2D m) {
+    this->setX(this->X() + m.X());
+    this->setY(this->Y() + m.Y());
+}

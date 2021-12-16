@@ -9,13 +9,9 @@
 
 class BackgroundView : public EntityView {
 public:
-    sf::Sprite sprite2;
-
     BackgroundView();
     explicit BackgroundView(const sf::Texture& texture);
     BackgroundView(const sf::Texture& texture, const sf::IntRect& rect);
-
-    //TODO use 2 sprite to display background sprites have size of window/camera
 };
 
 

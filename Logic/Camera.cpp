@@ -4,11 +4,9 @@
 
 #include "Camera.h"
 
-#include <cmath>
+Camera::Camera() : camWidth(0.0), camHeight(0.0), camCenterHeight(0.0), camBottom(0.0) , camSpeed(0.0){}
 
-Camera::Camera() : camWidth(0.0), camHeight(0.0), camCenterHeight(0.0), camBottom(0.0) {}
-
-Camera::Camera(float w, float h) : camWidth(w), camHeight(h), camCenterHeight(h/2), camBottom(0.0){}
+Camera::Camera(float w, float h) : camWidth(w), camHeight(h), camCenterHeight(h/2), camBottom(0.0), camSpeed(0.0){}
 
 float Camera::width() const {
     return camWidth;
@@ -26,6 +24,10 @@ float Camera::bottomHeight() const {
     return camBottom;
 }
 
+float Camera::speed() const {
+    return camSpeed;
+}
+
 void Camera::setCenterHeight(float c) {
     camCenterHeight = c;
 }
@@ -38,9 +40,14 @@ std::pair<float, float> Camera::getWindowCoord(const Entity& e) const {
     return wCoord;
 }
 
-void Camera::update(float playerHeight) {
-    if (playerHeight >= camCenterHeight){
-        camCenterHeight = std::floor(playerHeight);
-        camBottom = camCenterHeight - camHeight/2;
+void Camera::update(float playerHeight, float playerYSpeed) {
+    camCenterHeight += camSpeed;
+    camBottom = camCenterHeight - (camHeight/2);
+
+    if (playerHeight >= camCenterHeight && playerYSpeed > 0){
+        camSpeed = playerYSpeed;
+    }
+    if (playerHeight < camCenterHeight) {
+        camSpeed = 0.0;
     }
 }

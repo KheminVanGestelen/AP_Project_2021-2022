@@ -41,7 +41,6 @@ public:
 
     void setVisible(bool b);
 
-    void move(Vector2D m);
     void update(float worldWidth);
 
 };

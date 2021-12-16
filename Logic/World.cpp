@@ -7,8 +7,9 @@
 World::World() : factory(nullptr), player(Player()), camera(Camera()){
     difficulty = 0.1;
     diffBreakpoint = 5000.0;
+    player = Player();
     platforms = std::vector<Platform>();
-    bonuses = std::vector<Bonus>();
+    bgElements = std::vector<Background>();
     gravity = 0.0;
 
     rng = Random::getInstance();
@@ -17,8 +18,9 @@ World::World() : factory(nullptr), player(Player()), camera(Camera()){
 World::World(std::shared_ptr<AbstractFactory> fact, Camera cam) : factory(std::move(fact)), camera(cam){
     difficulty = 0.1;
     diffBreakpoint = 5000.0;
+    player = Player();
     platforms = std::vector<Platform>();
-    bonuses = std::vector<Bonus>();
+    bgElements = std::vector<Background>();
     gravity = 0.1;
 
     rng = Random::getInstance();
@@ -65,12 +67,23 @@ void World::initializePlatforms() {
     }
 }
 
+void World::initializeBackground() {
+    bgElements.push_back(factory->createBackground(0.0,"Background"));
+    bgElements.push_back(factory->createBackground(1024.0, "Background"));
+    bgElements.push_back(factory->createBackground(0.0,"StarsFar"));
+    bgElements.push_back(factory->createBackground(1024.0, "StarsFar"));
+    bgElements.push_back(factory->createBackground(0.0,"StarsClose"));
+    bgElements.push_back(factory->createBackground(1024.0, "StarsClose"));
+}
+
 void World::checkCollisions() {
     if (player.Y() <= 0.0)
         player.jump();
     for (Platform& pl : platforms){
-        // Condition to check if player is within the platforms width.
-        if (player.X() >= pl.X() - (pl.getWidth()/2) && player.X() <= pl.X() + (pl.getWidth()/2)){
+        // Condition to check if player can touch the top of the platform (width)
+        if ((player.X() - (player.getWidth()/4) >= pl.X() - (pl.getWidth()/2) && player.X() - (player.getWidth()/4) <= pl.X() + (pl.getWidth()/2))
+            || (player.X() + (player.getWidth()/4) >= pl.X() - (pl.getWidth()/2) && player.X() + (player.getWidth()/4) <= pl.X() + (pl.getWidth()/2))
+            || (player.X() >= pl.X() - (pl.getWidth()/2) && player.X() <= pl.X() + (pl.getWidth()/2))){
             // Condition checks if the player is above the platform and will go through the platform in the next frame.
             // (Collision occurs)
             if(player.Y() > pl.Y()+pl.getHeight() && player.Y() + player.getYSpeed() <= pl.Y()+pl.getHeight() && pl.isVisible()){
@@ -86,31 +99,37 @@ void World::checkCollisions() {
 void World::update() {
     checkCollisions();
 
-    if (player.X() < (-camera.width()/2)){
+    if (player.X() < (-camera.width() / 2)) {
         player.move(Vector2D(camera.width(), 0));
     }
-    if (player.X() > (camera.width()/2)){
+    if (player.X() > (camera.width() / 2)) {
         player.move(Vector2D(-camera.width(), 0));
     }
 
     player.update(gravity);
 
-    for (Platform& pl : platforms){
+    for (Platform &pl : platforms) {
         pl.update(camera.width());
     }
 
-    if (!platforms.front().isMovingVertical() && platforms.front().Y() + platforms.front().getHeight() < camera.bottomHeight()) {
+    for (Background& bgEl : bgElements) {
+        bgEl.update(camera.speed(), camera.bottomHeight());
+    }
+
+    if (!platforms.front().isMovingVertical() &&
+        platforms.front().Y() + platforms.front().getHeight() < camera.bottomHeight()) {
         platforms.erase(platforms.begin());
         platforms.push_back(generateRandomPlatform());
     }
 
-    if (platforms.front().getVerticalRange().second && platforms.front().getVerticalRange().first.second + platforms.front().getHeight() < camera.bottomHeight()) {
+    if (platforms.front().getVerticalRange().second &&
+        platforms.front().getVerticalRange().first.second + platforms.front().getHeight() < camera.bottomHeight()) {
         platforms.erase(platforms.begin());
         platforms.push_back(generateRandomPlatform());
     }
 
-    camera.update(player.Y());
-    if (difficulty < 1.0 && camera.centerHeight() > diffBreakpoint){
+    camera.update(player.Y(), player.getYSpeed());
+    if (difficulty < 1.0 && camera.centerHeight() > diffBreakpoint) {
         diffBreakpoint += 5000.0;
         if (difficulty <= 0.9)
             difficulty += 0.1;

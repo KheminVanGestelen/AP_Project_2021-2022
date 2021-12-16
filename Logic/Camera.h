@@ -14,6 +14,7 @@ class Camera {
     float camHeight;
     float camCenterHeight;
     float camBottom;
+    float camSpeed;
 public:
     Camera();
     Camera(float w, float h);
@@ -22,11 +23,12 @@ public:
     float height() const;
     float centerHeight() const;
     float bottomHeight() const;
+    float speed() const;
     void setCenterHeight(float c);
 
     std::pair<float, float> getWindowCoord(const Entity& e) const;
 
-    void update(float playerHeight);
+    void update(float playerHeight, float playerYSpeed);
 
 };
 

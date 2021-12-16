@@ -7,9 +7,22 @@
 
 
 #include "Entity.h"
+#include "../Visuals/BackgroundView.h"
 
-class Background : Entity {
+class Background : public Entity {
+    bool movingBG;
+    float movementfactor;
+    float ySpeed;
+public:
+    BackgroundView view;
 
+    Background();
+    Background(float x, float y, float w, float h, BackgroundView bgView, float mfact);
+
+    float getYSpeed() const;
+    void setYSpeed(float s);
+
+    void update(float camSpeed, float camBottomHeight);
 };
 
 

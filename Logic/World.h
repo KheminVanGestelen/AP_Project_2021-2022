@@ -9,7 +9,7 @@
 #include <memory>
 #include "Player.h"
 #include "Platform.h"
-#include "Bonus.h"
+#include "Background.h"
 #include "AbstractFactory.h"
 #include "Random.h"
 #include "Camera.h"
@@ -25,7 +25,7 @@ class World {
 public:
     Player player;
     std::vector<Platform> platforms;
-    std::vector<Bonus> bonuses;
+    std::vector<Background> bgElements;
     Camera camera;
 
     World();
@@ -39,6 +39,7 @@ public:
 
     void initializePlayer();
     void initializePlatforms();
+    void initializeBackground();
     void checkCollisions();
     void update();
 };

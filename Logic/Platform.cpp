@@ -96,11 +96,6 @@ void Platform::setVisible(bool b) {
     visible = b;
 }
 
-void Platform::move(Vector2D m) {
-    this->setX(this->X() + m.X());
-    this->setY(this->Y() + m.Y());
-}
-
 void Platform::update(float worldWidth) {
     Vector2D movement = Vector2D(0.0, 0.0);
 
@@ -118,6 +113,5 @@ void Platform::update(float worldWidth) {
         ySpeed = -baseSpeed;
     if (movingVertical && (this->Y() <= verticalRange.first || this->Y() <= 0.0))
         ySpeed = baseSpeed;
-
 
 }

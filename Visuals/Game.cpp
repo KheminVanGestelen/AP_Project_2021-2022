@@ -4,11 +4,12 @@
 
 #include "Game.h"
 
-Game::Game() : mainWindow(sf::VideoMode(500, 500) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())) {
+Game::Game() : mainWindow(sf::VideoMode(750, 750) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())) {
     Camera cam = Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y);
     world = World(factory, cam);
     world.initializePlayer();
     world.initializePlatforms();
+    world.initializeBackground();
     timePerFrame = 1000/60;
 }
 
@@ -43,6 +44,9 @@ void Game::updateSpriteCoord() {
     for (Platform& pl : world.platforms){
         pl.view.setSpritePos(world.camera.getWindowCoord(pl));
     }
+    for (Background& bgEl : world.bgElements) {
+        bgEl.view.setSpritePos(world.camera.getWindowCoord(bgEl));
+    }
 }
 
 
@@ -54,6 +58,10 @@ void Game::render() {
     updateSpriteCoord();
 
     mainWindow.clear();
+    for (const Background& bgEl : world.bgElements) {
+        mainWindow.draw(bgEl.view.sprite);
+    }
+
     for (const Platform& pl : world.platforms){
         if (pl.isVisible())
             mainWindow.draw(pl.view.sprite);

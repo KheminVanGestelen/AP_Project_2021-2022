@@ -23,4 +23,18 @@ Platform ConcreteFactory::createPlatform(float x, float y, float heightInWorld) 
     return {x, y, 48.0, 16.0, plView, heightInWorld};
 }
 
+Background ConcreteFactory::createBackground(float y, std::string bgType) {
+    float mfact;
+    if (bgType == "Background")
+        mfact = -1.0;
+    if (bgType == "StarsFar")
+        mfact = 10.0;
+    if (bgType == "StarsClose")
+        mfact = 2.0;
+
+    BackgroundView bgView = BackgroundView(textures[bgType]);
+
+    return {0.0, y, 1024.0, 1024.0,bgView, mfact};
+}
+
 //Bonus ConcreteFactory::createBonus() {}

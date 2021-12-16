@@ -31,7 +31,6 @@ public:
     float getYSpeed() const;
     void setYSpeed(float f);
 
-    void move(Vector2D m);
     void jump();
     void update(float gravity);
 };

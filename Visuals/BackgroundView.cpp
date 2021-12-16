@@ -4,8 +4,8 @@
 
 #include "BackgroundView.h"
 
-BackgroundView::BackgroundView() : EntityView(), sprite2(sf::Sprite()) {}
+BackgroundView::BackgroundView() : EntityView() {}
 
-BackgroundView::BackgroundView(const sf::Texture &texture) : EntityView(texture) , sprite2(sf::Sprite(texture)) {}
+BackgroundView::BackgroundView(const sf::Texture &texture) : EntityView(texture) {}
 
-BackgroundView::BackgroundView(const sf::Texture &texture, const sf::IntRect &rect) : EntityView(texture, rect) , sprite2(sf::Sprite(texture, rect)) {}
+BackgroundView::BackgroundView(const sf::Texture &texture, const sf::IntRect &rect) : EntityView(texture, rect) {}

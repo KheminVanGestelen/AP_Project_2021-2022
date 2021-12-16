@@ -9,6 +9,7 @@
 #include "PlayerView.h"
 #include "PlatformView.h"
 #include "BonusView.h"
+#include "BackgroundView.h"
 #include "TextureLoader.h"
 
 class ConcreteFactory : public AbstractFactory {
@@ -18,6 +19,7 @@ public:
     Player createPlayer() override;
     Platform createPlatform(float x, float y, float heightInWorld) override;
 //    Bonus createBonus() override;
+    Background createBackground(float y, std::string bgType) override;
 };
 
 
