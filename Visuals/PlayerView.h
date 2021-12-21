@@ -17,7 +17,7 @@ public:
                const sf::IntRect& rect, const sf::IntRect& rect2);
 
     void update(float ySpeed, bool movingLeft, bool movingRight);
-    void setSpritePos(std::pair<float, float> newPos);
+    void setSpritePos(std::pair<float, float> newPos) override;
 
 };
 

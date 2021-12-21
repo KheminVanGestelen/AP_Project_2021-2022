@@ -16,7 +16,7 @@ public:
     explicit EntityView(const sf::Texture& texture);
     EntityView(const sf::Texture& texture, const sf::IntRect& rect);
 
-    void setSpritePos(std::pair<float, float> newPos);
+    virtual void setSpritePos(std::pair<float, float> newPos);
 };
 
 
