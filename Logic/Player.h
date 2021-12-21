@@ -10,6 +10,8 @@
 #include "../Visuals/PlayerView.h"
 
 class Player : public Entity {
+    bool usingRocket;
+
     float xSpeed;
     float ySpeed;
     float baseYSpeed;
@@ -24,14 +26,17 @@ public:
 
     bool isMovingLeft() const;
     bool isMovingRight() const;
+    bool isUsingRocket() const;
 
     void setMovingLeft(bool b);
     void setMovingRight(bool b);
+    void setUsingRocket(bool b);
 
     float getYSpeed() const;
     void setYSpeed(float f);
 
     void jump();
+    void enterRocket();
     void update(float gravity);
 };
 

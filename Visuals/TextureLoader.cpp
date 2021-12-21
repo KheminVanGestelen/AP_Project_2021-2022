@@ -42,6 +42,12 @@ TextureLoader::TextureLoader() {
         std::cerr << "Could not load texture for close stars " << std::endl;
     else
         textureMap["StarsClose"] = starsCloseTexture;
+
+    sf::Texture movingRocketTexture;
+    if (!movingRocketTexture.loadFromFile("Assets/MovingRocket.png"))
+        std::cerr << "Could not load texture for moving Rocket " << std::endl;
+    else
+        textureMap["MovingRocket"] = movingRocketTexture;
 }
 
 std::shared_ptr<TextureLoader> TextureLoader::getInstance() {

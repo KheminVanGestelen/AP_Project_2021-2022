@@ -66,7 +66,13 @@ void Game::render() {
         if (pl.isVisible())
             mainWindow.draw(pl.view.sprite);
     }
-    mainWindow.draw(world.player.view.sprite);
+
+    if (world.player.isUsingRocket()) {
+        mainWindow.draw(world.player.view.rocket);
+    } else {
+        mainWindow.draw(world.player.view.sprite);
+    }
+
     mainWindow.display();
 }
 

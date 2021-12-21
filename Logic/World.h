@@ -41,6 +41,7 @@ public:
     void initializePlatforms();
     void initializeBackground();
     void checkCollisions();
+    void updateGravity(bool playerInRocket);
     void update();
 };
 

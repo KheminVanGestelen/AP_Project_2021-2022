@@ -9,11 +9,15 @@
 
 class PlayerView : public EntityView {
 public:
+    sf::Sprite rocket;
+
     PlayerView();
-    explicit PlayerView(const sf::Texture& texture);
-    PlayerView(const sf::Texture& texture, const sf::IntRect& rect);
+    explicit PlayerView(const sf::Texture& texture, const sf::Texture &rocketTexture);
+    PlayerView(const sf::Texture& texture, const sf::Texture &rocketTexture,
+               const sf::IntRect& rect, const sf::IntRect& rect2);
 
     void update(float ySpeed, bool movingLeft, bool movingRight);
+    void setSpritePos(std::pair<float, float> newPos);
 
 };
 

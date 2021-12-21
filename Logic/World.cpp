@@ -6,7 +6,7 @@
 
 World::World() : factory(nullptr), player(Player()), camera(Camera()){
     difficulty = 0.1;
-    diffBreakpoint = 5000.0;
+    diffBreakpoint = 2500.0;
     player = Player();
     platforms = std::vector<Platform>();
     bgElements = std::vector<Background>();
@@ -17,7 +17,7 @@ World::World() : factory(nullptr), player(Player()), camera(Camera()){
 
 World::World(std::shared_ptr<AbstractFactory> fact, Camera cam) : factory(std::move(fact)), camera(cam){
     difficulty = 0.1;
-    diffBreakpoint = 5000.0;
+    diffBreakpoint = 2500.0;
     player = Player();
     platforms = std::vector<Platform>();
     bgElements = std::vector<Background>();
@@ -96,6 +96,13 @@ void World::checkCollisions() {
     }
 }
 
+void World::updateGravity(bool playerInRocket) {
+    if (playerInRocket)
+        gravity = 0.5;
+    else
+        gravity = 0.1;
+}
+
 void World::update() {
     checkCollisions();
 
@@ -107,6 +114,7 @@ void World::update() {
     }
 
     player.update(gravity);
+    updateGravity(player.isUsingRocket());
 
     for (Platform &pl : platforms) {
         pl.update(camera.width());
@@ -130,9 +138,9 @@ void World::update() {
 
     camera.update(player.Y(), player.getYSpeed());
     if (difficulty < 1.0 && camera.centerHeight() > diffBreakpoint) {
-        diffBreakpoint += 5000.0;
-        if (difficulty <= 0.9)
-            difficulty += 0.1;
+        diffBreakpoint += 2500.0;
+        if (difficulty <= 0.95)
+            difficulty += 0.05;
         else
             difficulty = 1.0;
     }
