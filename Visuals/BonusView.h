@@ -8,10 +8,13 @@
 #include "EntityView.h"
 
 class BonusView : public EntityView {
+    float frameCounter;
 public:
     BonusView();
     explicit BonusView(const sf::Texture& texture);
     BonusView(const sf::Texture& texture, const sf::IntRect& rect);
+
+    void update();
 
 };
 

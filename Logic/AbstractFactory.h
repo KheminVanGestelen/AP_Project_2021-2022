@@ -14,9 +14,9 @@ class AbstractFactory {
 
 public:
     virtual Player createPlayer() = 0;
-    virtual Platform createPlatform(float x, float y, float heightInWorld) = 0;
-//    virtual Bonus createBonus() = 0;
+    virtual Platform createPlatform(float x, float y, float heightInWorld, const std::pair<bool, Bonus>& b) = 0;
     virtual Background createBackground(float y, std::string bgType) = 0;
+    virtual Bonus createBonus(float x, float y) = 0;
 };
 
 

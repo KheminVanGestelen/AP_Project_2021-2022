@@ -11,15 +11,16 @@
 #include "BonusView.h"
 #include "BackgroundView.h"
 #include "TextureLoader.h"
+#include "../Logic/Random.h"
 
 class ConcreteFactory : public AbstractFactory {
     std::map<std::string, sf::Texture> textures;
 public:
     ConcreteFactory();
     Player createPlayer() override;
-    Platform createPlatform(float x, float y, float heightInWorld) override;
-//    Bonus createBonus() override;
+    Platform createPlatform(float x, float y, float heightInWorld, const std::pair<bool, Bonus>& b) override;
     Background createBackground(float y, std::string bgType) override;
+    Bonus createBonus(float x, float y) override;
 };
 
 

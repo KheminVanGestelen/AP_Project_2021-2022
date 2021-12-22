@@ -69,6 +69,10 @@ void Player::enterRocket() {
     ySpeed = 85;
 }
 
+void Player::bounce() {
+    ySpeed = 2*baseYSpeed;
+}
+
 void Player::update(float gravity) {
     Vector2D movement = Vector2D(0.0, 0.0);
     if (usingRocket && ySpeed < 5.0) {

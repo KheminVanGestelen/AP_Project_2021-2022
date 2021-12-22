@@ -20,7 +20,7 @@ TextureLoader::TextureLoader() {
         textureMap["Platform"] = platformTexture;
 
     sf::Texture bonusTexture;
-    if (!bonusTexture.loadFromFile("Assets/Bonus.png"))
+    if (!bonusTexture.loadFromFile("Assets/JumpPadBonus.png"))
         std::cerr << "Could not load bonus texture" << std::endl;
     else
         textureMap["Bonus"] = bonusTexture;
@@ -48,6 +48,18 @@ TextureLoader::TextureLoader() {
         std::cerr << "Could not load texture for moving Rocket " << std::endl;
     else
         textureMap["MovingRocket"] = movingRocketTexture;
+
+    sf::Texture rocketBonusTexture;
+    if (!rocketBonusTexture.loadFromFile("Assets/RocketBonus.png"))
+        std::cerr << "Could not load texture for Rocket bonus" << std::endl;
+    else
+        textureMap["Rocket"] = rocketBonusTexture;
+
+    sf::Texture jumpPadBonusTexture;
+    if (!jumpPadBonusTexture.loadFromFile("Assets/JumpPadBonus.png"))
+        std::cerr << "Could not load texture for Jump Pad bonus" << std::endl;
+    else
+        textureMap["JumpPad"] = jumpPadBonusTexture;
 }
 
 std::shared_ptr<TextureLoader> TextureLoader::getInstance() {

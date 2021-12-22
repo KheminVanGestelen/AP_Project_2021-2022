@@ -37,6 +37,7 @@ public:
 
     void jump();
     void enterRocket();
+    void bounce();
     void update(float gravity);
 };
 

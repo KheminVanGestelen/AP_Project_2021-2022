@@ -43,6 +43,9 @@ void Game::updateSpriteCoord() {
     world.player.view.setSpritePos(world.camera.getWindowCoord(world.player));
     for (Platform& pl : world.platforms){
         pl.view.setSpritePos(world.camera.getWindowCoord(pl));
+        if (pl.hasUsableBonus()) {
+            pl.bonus.view.setSpritePos(world.camera.getWindowCoord(pl.bonus));
+        }
     }
     for (Background& bgEl : world.bgElements) {
         bgEl.view.setSpritePos(world.camera.getWindowCoord(bgEl));
@@ -63,8 +66,11 @@ void Game::render() {
     }
 
     for (const Platform& pl : world.platforms){
-        if (pl.isVisible())
+        if (pl.isVisible()){
             mainWindow.draw(pl.view.sprite);
+            if (pl.hasUsableBonus())
+                mainWindow.draw(pl.bonus.view.sprite);
+        }
     }
 
     if (world.player.isUsingRocket()) {

@@ -4,8 +4,9 @@
 
 #include "Platform.h"
 
-Platform::Platform() : Entity(0.0, 0.0, 1.0, 1.0) , view(PlatformView()){
+Platform::Platform() : Entity(0.0, 0.0, 1.0, 1.0) , view(PlatformView()), bonus(Bonus()){
     visible = true;
+    usableBonus = false;
 
     fragile = false;
     movingHorizontal = false;
@@ -20,16 +21,18 @@ Platform::Platform() : Entity(0.0, 0.0, 1.0, 1.0) , view(PlatformView()){
     ySpeed = 0.0;
 }
 
-Platform::Platform(float x, float y, float w, float h, PlatformView plView, float heightInWorld) : Entity(x, y, w, h) , view(std::move(plView)){
+Platform::Platform(float x, float y, float w, float h, PlatformView plView,
+                   float heightInWorld, const std::pair<bool, Bonus>& b) : Entity(x, y, w, h) , view(std::move(plView)), bonus(b.second){
     visible = true;
+    usableBonus = b.first;
 
     int r1 = Random::getInstance()->randInt(0, 100);
-    if (r1 >= 70 && r1 < 80 && heightInWorld > 5000){
+    if (r1 >= 70 && r1 < 80 && heightInWorld > 5000) {
         fragile = false;
         movingHorizontal = true;
         movingVertical = false;
     }
-    else if (r1 >= 80 && r1 < 90 && heightInWorld > 10000){
+    else if (r1 >= 80 && r1 < 90 && heightInWorld > 10000) {
         fragile = false;
         movingHorizontal = false;
         movingVertical = true;
@@ -59,17 +62,16 @@ Platform::Platform(float x, float y, float w, float h, PlatformView plView, floa
 
     if (movingVertical) {
         verticalRange = {y - 100.0, y + 100.0};
-        ySpeed = baseSpeed;
+        ySpeed = baseSpeed/2;
     }
     else {
         verticalRange = {0.0, 0.0};
         ySpeed = 0.0;
     }
+}
 
-    int r2 = Random::getInstance()->randInt(0, 100);
-    if (r2 < 30 && heightInWorld > 2500.0) {
-        //add Bonus to platform;
-    }
+bool Platform::hasUsableBonus() const {
+    return usableBonus;
 }
 
 bool Platform::isVisible() const {
@@ -88,8 +90,16 @@ bool Platform::isMovingVertical() const {
     return movingVertical;
 }
 
+float Platform::getYSpeed() const {
+    return ySpeed;
+}
+
 std::pair<std::pair<float, float>, bool> Platform::getVerticalRange() const {
     return {verticalRange, movingVertical};
+}
+
+void Platform::setUsableBonus(bool b) {
+    usableBonus = b;
 }
 
 void Platform::setVisible(bool b) {
@@ -103,6 +113,9 @@ void Platform::update(float worldWidth) {
         movement += std::pair<float, float>(xSpeed, ySpeed);
         move(movement);
     }
+
+    if (usableBonus)
+        bonus.update(movement);
 
     if (movingHorizontal && (this->X() >= horizontalRange.second || this->X() + (this->getWidth()/2) >= worldWidth/2))
         xSpeed = -baseSpeed;

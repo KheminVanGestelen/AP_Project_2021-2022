@@ -8,6 +8,7 @@
 #include "EntityView.h"
 
 class PlayerView : public EntityView {
+    int frameCounter;
 public:
     sf::Sprite rocket;
 

@@ -45,6 +45,8 @@ Platform World::generateRandomPlatform() {
     }
     else {
         minY = platforms.back().Y() + platforms.back().getHeight() + 1;
+        if (platforms.back().hasUsableBonus())
+            minY += platforms.back().bonus.getHeight();
     }
     float maxY = minY + (difficulty * (camera.height()/2));
 
@@ -54,7 +56,15 @@ Platform World::generateRandomPlatform() {
     float randX = rng->randFloat(minX, maxX);
     float randY = rng->randFloat(minY, maxY);
 
-    return factory->createPlatform(randX, randY, camera.centerHeight());
+    int r1 = Random::getInstance()->randInt(0, 100);
+    std::pair<bool, Bonus> bonusPair;
+    if (r1 < 15 && camera.centerHeight() > 1000) {
+        bonusPair = std::pair<bool, Bonus>(true, factory->createBonus(randX, randY + 16));
+    } else {
+        bonusPair = std::pair<bool, Bonus>(false, Bonus());
+    }
+
+    return factory->createPlatform(randX, randY, camera.centerHeight(), bonusPair);
 }
 
 void World::initializePlayer() {
@@ -80,17 +90,29 @@ void World::checkCollisions() {
     if (player.Y() <= 0.0)
         player.jump();
     for (Platform& pl : platforms){
+        float plMovement = 0.0;
+        if (pl.isMovingVertical() && pl.getYSpeed() > 0.0){
+            plMovement = pl.getYSpeed();
+        }
         // Condition to check if player can touch the top of the platform (width)
         if ((player.X() - (player.getWidth()/4) >= pl.X() - (pl.getWidth()/2) && player.X() - (player.getWidth()/4) <= pl.X() + (pl.getWidth()/2))
             || (player.X() + (player.getWidth()/4) >= pl.X() - (pl.getWidth()/2) && player.X() + (player.getWidth()/4) <= pl.X() + (pl.getWidth()/2))
             || (player.X() >= pl.X() - (pl.getWidth()/2) && player.X() <= pl.X() + (pl.getWidth()/2))){
             // Condition checks if the player is above the platform and will go through the platform in the next frame.
             // (Collision occurs)
-            if(player.Y() > pl.Y()+pl.getHeight() && player.Y() + player.getYSpeed() <= pl.Y()+pl.getHeight() && pl.isVisible()){
+            if(player.Y() > pl.Y()+pl.getHeight() && player.Y() + player.getYSpeed() <= pl.Y()+pl.getHeight()+plMovement && pl.isVisible()){
                 if (pl.isFragile()){
                     pl.setVisible(false);
                 }
-                player.jump();
+                if (pl.hasUsableBonus()) {
+                    pl.setUsableBonus(false);
+                    if (pl.bonus.getType() == "Rocket")
+                        player.enterRocket();
+                    if (pl.bonus.getType() == "JumpPad")
+                        player.bounce();
+                } else {
+                    player.jump();
+                }
             }
         }
     }
@@ -125,13 +147,13 @@ void World::update() {
     }
 
     if (!platforms.front().isMovingVertical() &&
-        platforms.front().Y() + platforms.front().getHeight() < camera.bottomHeight()) {
+        platforms.front().Y() + platforms.front().getHeight() < camera.bottomHeight() - 48) {
         platforms.erase(platforms.begin());
         platforms.push_back(generateRandomPlatform());
     }
 
     if (platforms.front().getVerticalRange().second &&
-        platforms.front().getVerticalRange().first.second + platforms.front().getHeight() < camera.bottomHeight()) {
+        platforms.front().getVerticalRange().first.second + platforms.front().getHeight() < camera.bottomHeight() - 48) {
         platforms.erase(platforms.begin());
         platforms.push_back(generateRandomPlatform());
     }

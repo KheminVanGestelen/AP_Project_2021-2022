@@ -14,6 +14,7 @@
 
 class Platform : public Entity {
     bool visible;
+    bool usableBonus;
 
     bool fragile;
     bool movingHorizontal;
@@ -28,17 +29,20 @@ class Platform : public Entity {
     float baseSpeed;
 public:
     PlatformView view;
-//    Bonus bonus;
+    Bonus bonus;
 
     Platform();
-    Platform(float x, float y, float w, float h, PlatformView plView, float heightInWorld);
+    Platform(float x, float y, float w, float h, PlatformView plView, float heightInWorld, const std::pair<bool, Bonus>& b);
 
+    bool hasUsableBonus() const;
     bool isVisible() const;
     bool isFragile() const;
     bool isMovingHorizontal() const;
     bool isMovingVertical() const;
+    float getYSpeed() const;
     std::pair<std::pair<float, float>, bool> getVerticalRange() const;
 
+    void setUsableBonus(bool b);
     void setVisible(bool b);
 
     void update(float worldWidth);
