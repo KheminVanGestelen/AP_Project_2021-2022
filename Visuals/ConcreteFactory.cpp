@@ -51,11 +51,15 @@ Bonus ConcreteFactory::createBonus(float x, float y) {
         height = 48.0;
     } else {
         bType = "JumpPad";
-        width = 48.0;
-        height = 48.0;
+        width = 32.0;
+        height = 32.0;
     }
 
-    sf::IntRect box = sf::IntRect(0,0,(int) width,(int) height);
+    sf::IntRect box;
+    if (bType == "Rocket")
+        box = sf::IntRect(0,0,48,48);
+    if (bType == "JumpPad")
+        box = sf::IntRect(0,0,32,32);
 
     BonusView bView = BonusView(textures[bType], box);
 

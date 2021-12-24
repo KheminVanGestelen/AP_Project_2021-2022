@@ -13,6 +13,7 @@
 #include "AbstractFactory.h"
 #include "Random.h"
 #include "Camera.h"
+#include "Score.h"
 
 class World {
     float gravity;
@@ -22,6 +23,7 @@ class World {
     std::shared_ptr<AbstractFactory> factory;
     std::shared_ptr<Random> rng;
 
+    Score score;
 public:
     Player player;
     std::vector<Platform> platforms;
@@ -34,6 +36,7 @@ public:
     float getGravity() const;
     float getDifficulty() const;
     float getDiffBreakpoint() const;
+    Score getScore() const;
 
     Platform generateRandomPlatform();
 

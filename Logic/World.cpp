@@ -4,7 +4,7 @@
 
 #include "World.h"
 
-World::World() : factory(nullptr), player(Player()), camera(Camera()){
+World::World() : factory(nullptr), player(Player()), camera(Camera()), score(Score()){
     difficulty = 0.1;
     diffBreakpoint = 2500.0;
     player = Player();
@@ -15,7 +15,7 @@ World::World() : factory(nullptr), player(Player()), camera(Camera()){
     rng = Random::getInstance();
 }
 
-World::World(std::shared_ptr<AbstractFactory> fact, Camera cam) : factory(std::move(fact)), camera(cam){
+World::World(std::shared_ptr<AbstractFactory> fact, Camera cam) : factory(std::move(fact)), camera(cam), score(Score()){
     difficulty = 0.1;
     diffBreakpoint = 2500.0;
     player = Player();
@@ -36,6 +36,10 @@ float World::getDifficulty() const {
 
 float World::getDiffBreakpoint() const {
     return diffBreakpoint;
+}
+
+Score World::getScore() const {
+    return score;
 }
 
 Platform World::generateRandomPlatform() {
