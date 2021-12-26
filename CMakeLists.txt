@@ -10,7 +10,7 @@ add_executable(AP-Project-2021-2022 main.cpp Visuals/Game.h Visuals/Game.cpp Log
         Logic/AbstractFactory.h Visuals/ConcreteFactory.cpp Visuals/ConcreteFactory.h Logic/Observer.cpp
         Logic/Observer.h Visuals/EntityView.cpp Visuals/EntityView.h Visuals/PlatformView.cpp Visuals/PlatformView.h
         Visuals/PlayerView.cpp Visuals/PlayerView.h Visuals/BonusView.cpp Visuals/BonusView.h Logic/Score.cpp
-        Logic/Score.h Visuals/TextureLoader.cpp Visuals/TextureLoader.h Visuals/BackgroundView.cpp Visuals/BackgroundView.h)
+        Logic/Score.h Visuals/TextureLoader.cpp Visuals/TextureLoader.h Visuals/BackgroundView.cpp Visuals/BackgroundView.h Visuals/ScoreView.cpp Visuals/ScoreView.h)
 
 include_directories(/usr/include c:/SFML/include)
 

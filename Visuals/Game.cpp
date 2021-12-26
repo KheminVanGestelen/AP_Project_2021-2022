@@ -4,9 +4,8 @@
 
 #include "Game.h"
 
-Game::Game() : mainWindow(sf::VideoMode(750, 750) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())) {
-    Camera cam = Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y);
-    world = World(factory, cam);
+Game::Game() : mainWindow(sf::VideoMode(750, 750) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())),
+               world(World(factory, Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y))) {
     world.initializePlayer();
     world.initializePlatforms();
     world.initializeBackground();
@@ -59,6 +58,7 @@ void Game::update() {
 
 void Game::render() {
     updateSpriteCoord();
+    world.score.view.updateString(world.score.getScoreString());
 
     mainWindow.clear();
     for (const Background& bgEl : world.bgElements) {
@@ -72,6 +72,8 @@ void Game::render() {
                 mainWindow.draw(pl.bonus.view.sprite);
         }
     }
+
+    mainWindow.draw(world.score.view.scoreText);
 
     if (world.player.isUsingRocket()) {
         mainWindow.draw(world.player.view.rocket);

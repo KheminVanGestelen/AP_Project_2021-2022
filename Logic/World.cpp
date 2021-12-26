@@ -4,20 +4,11 @@
 
 #include "World.h"
 
-World::World() : factory(nullptr), player(Player()), camera(Camera()), score(Score()){
-    difficulty = 0.1;
-    diffBreakpoint = 2500.0;
-    player = Player();
-    platforms = std::vector<Platform>();
-    bgElements = std::vector<Background>();
-    gravity = 0.0;
-
-    rng = Random::getInstance();
-}
-
 World::World(std::shared_ptr<AbstractFactory> fact, Camera cam) : factory(std::move(fact)), camera(cam), score(Score()){
     difficulty = 0.1;
     diffBreakpoint = 2500.0;
+    lastJumpLoc = {0,0};
+
     player = Player();
     platforms = std::vector<Platform>();
     bgElements = std::vector<Background>();
@@ -52,7 +43,7 @@ Platform World::generateRandomPlatform() {
         if (platforms.back().hasUsableBonus())
             minY += platforms.back().bonus.getHeight();
     }
-    float maxY = minY + (difficulty * (camera.height()/2));
+    float maxY = minY + (difficulty * ((camera.height()/2) - 50));
 
     float minX = -camera.width()/2 + 24;
     float maxX = camera.width()/2 - 24;
@@ -117,6 +108,11 @@ void World::checkCollisions() {
                 } else {
                     player.jump();
                 }
+                if (lastJumpLoc.first == std::floor(pl.X()) && lastJumpLoc.second == std::floor(pl.Y())) {
+                    score.decrease(500);
+                } else {
+                    lastJumpLoc = {std::floor(pl.X()), std::floor(pl.Y())};
+                }
             }
         }
     }
@@ -160,6 +156,10 @@ void World::update() {
         platforms.front().getVerticalRange().first.second + platforms.front().getHeight() < camera.bottomHeight() - 48) {
         platforms.erase(platforms.begin());
         platforms.push_back(generateRandomPlatform());
+    }
+
+    if (camera.speed() > 0.0) {
+        score.increase(std::floor(camera.speed()/5));
     }
 
     camera.update(player.Y(), player.getYSpeed());

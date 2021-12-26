@@ -19,18 +19,18 @@ class World {
     float gravity;
     float difficulty;
     float diffBreakpoint;
+    std::pair<int, int> lastJumpLoc;
+    Platform lastPlayerContact;
 
     std::shared_ptr<AbstractFactory> factory;
     std::shared_ptr<Random> rng;
-
-    Score score;
 public:
     Player player;
     std::vector<Platform> platforms;
     std::vector<Background> bgElements;
+    Score score;
     Camera camera;
 
-    World();
     World(std::shared_ptr<AbstractFactory> fact, Camera cam);
 
     float getGravity() const;
