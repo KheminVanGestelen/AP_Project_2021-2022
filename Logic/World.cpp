@@ -108,7 +108,10 @@ void World::checkCollisions() {
                 } else {
                     player.jump();
                 }
-                if (lastJumpLoc.first == std::floor(pl.X()) && lastJumpLoc.second == std::floor(pl.Y())) {
+                if ((lastJumpLoc.first == std::floor(pl.X()) && lastJumpLoc.second == std::floor(pl.Y())) ||
+                    (lastJumpLoc.first == std::floor(pl.X()) && pl.isMovingVertical()) ||
+                    (lastJumpLoc.second == std::floor(pl.Y()) && pl.isMovingHorizontal()))
+                {
                     score.decrease(500);
                 } else {
                     lastJumpLoc = {std::floor(pl.X()), std::floor(pl.Y())};
