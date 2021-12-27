@@ -18,6 +18,7 @@ public:
     void increase(int i);
     void decrease(int i);
     std::string getScoreString() const;
+    void reset();
 };
 
 

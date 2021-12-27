@@ -20,3 +20,7 @@ void Score::decrease(int i) {
 std::string Score::getScoreString() const {
     return "Score: " + std::to_string(score);
 }
+
+void Score::reset() {
+    score = 0;
+}

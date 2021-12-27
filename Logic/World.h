@@ -46,6 +46,7 @@ public:
     void checkCollisions();
     void updateGravity(bool playerInRocket);
     void update();
+    void reset();
 };
 
 

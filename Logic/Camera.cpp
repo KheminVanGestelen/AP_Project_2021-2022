@@ -51,3 +51,9 @@ void Camera::update(float playerHeight, float playerYSpeed) {
         camSpeed = 0.0;
     }
 }
+
+void Camera::reset() {
+    camCenterHeight = camHeight/2;
+    camBottom = 0.0;
+    camSpeed = 0.0;
+}

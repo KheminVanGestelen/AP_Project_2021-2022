@@ -11,6 +11,7 @@
 #include "ConcreteFactory.h"
 #include "../Logic/World.h"
 #include "../Logic/Vector2D.h"
+#include "TextureLoader.h"
 
 
 using namespace std;
@@ -19,6 +20,10 @@ class Game {
     sf::RenderWindow mainWindow;
     //time in ms per frame
     long long int timePerFrame;
+    bool gameOver;
+    sf::Sprite gameOverScreen;
+
+    std::map<std::string, sf::Texture> textures;
     shared_ptr<ConcreteFactory> factory;
     World world;
 public:
@@ -30,6 +35,7 @@ private:
     void updateSpriteCoord();
     void update();
     void render();
+    void reset();
 };
 
 

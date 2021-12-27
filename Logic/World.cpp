@@ -174,3 +174,19 @@ void World::update() {
             difficulty = 1.0;
     }
 }
+
+void World::reset() {
+    platforms.clear();
+    bgElements.clear();
+
+    camera.reset();
+    score.reset();
+    difficulty = 0.1;
+    diffBreakpoint = 2500.0;
+    lastJumpLoc = {0,0};
+    gravity = 0.1;
+
+    initializePlayer();
+    initializePlatforms();
+    initializeBackground();
+}

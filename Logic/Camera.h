@@ -29,6 +29,7 @@ public:
     std::pair<float, float> getWindowCoord(const Entity& e) const;
 
     void update(float playerHeight, float playerYSpeed);
+    void reset();
 
 };
 

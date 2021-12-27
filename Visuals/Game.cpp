@@ -6,10 +6,15 @@
 
 Game::Game() : mainWindow(sf::VideoMode(750, 750) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())),
                world(World(factory, Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y))) {
+    textures = TextureLoader::getInstance()->textures();
     world.initializePlayer();
     world.initializePlatforms();
     world.initializeBackground();
     timePerFrame = 1000/60;
+    gameOver = false;
+    gameOverScreen = sf::Sprite(textures["GameOver"]);
+    gameOverScreen.setScale(2.0,2.0);
+    gameOverScreen.setPosition((float) (mainWindow.getSize().x-512)/2, (float) (mainWindow.getSize().y-512)/2);
 }
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool pressed) {
@@ -18,6 +23,9 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool pressed) {
     }
     if(key == sf::Keyboard::D) {
         world.player.setMovingRight(pressed);
+    }
+    if(key == sf::Keyboard::R && !pressed) {
+        reset();
     }
 }
 
@@ -54,34 +62,44 @@ void Game::updateSpriteCoord() {
 
 void Game::update() {
     world.update();
+    if (world.player.Y() < world.camera.bottomHeight() - 50) {
+        gameOver = true;
+    }
 }
 
 void Game::render() {
-    updateSpriteCoord();
-    world.score.view.updateString(world.score.getScoreString());
-
-    mainWindow.clear();
-    for (const Background& bgEl : world.bgElements) {
-        mainWindow.draw(bgEl.view.sprite);
+    if (gameOver) {
+        mainWindow.clear();
+        mainWindow.draw(gameOverScreen);
+        mainWindow.display();
     }
+    else {
+        updateSpriteCoord();
+        world.score.view.updateString(world.score.getScoreString());
 
-    for (const Platform& pl : world.platforms){
-        if (pl.isVisible()){
-            mainWindow.draw(pl.view.sprite);
-            if (pl.hasUsableBonus())
-                mainWindow.draw(pl.bonus.view.sprite);
+        mainWindow.clear();
+        for (const Background &bgEl: world.bgElements) {
+            mainWindow.draw(bgEl.view.sprite);
         }
+
+        for (const Platform &pl: world.platforms) {
+            if (pl.isVisible()) {
+                mainWindow.draw(pl.view.sprite);
+                if (pl.hasUsableBonus())
+                    mainWindow.draw(pl.bonus.view.sprite);
+            }
+        }
+
+        mainWindow.draw(world.score.view.scoreText);
+
+        if (world.player.isUsingRocket()) {
+            mainWindow.draw(world.player.view.rocket);
+        } else {
+            mainWindow.draw(world.player.view.sprite);
+        }
+
+        mainWindow.display();
     }
-
-    mainWindow.draw(world.score.view.scoreText);
-
-    if (world.player.isUsingRocket()) {
-        mainWindow.draw(world.player.view.rocket);
-    } else {
-        mainWindow.draw(world.player.view.sprite);
-    }
-
-    mainWindow.display();
 }
 
 void Game::run() {
@@ -98,4 +116,9 @@ void Game::run() {
         }
         render();
     }
+}
+
+void Game::reset() {
+    world.reset();
+    gameOver = false;
 }

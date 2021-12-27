@@ -60,6 +60,12 @@ TextureLoader::TextureLoader() {
         std::cerr << "Could not load texture for Jump Pad bonus" << std::endl;
     else
         textureMap["JumpPad"] = jumpPadBonusTexture;
+
+    sf::Texture gameOverScreenTexture;
+    if (!gameOverScreenTexture.loadFromFile("Assets/GameOverScreen.png"))
+        std::cerr << "Could not load texture for Game Over screen" << std::endl;
+    else
+        textureMap["GameOver"] = gameOverScreenTexture;
 }
 
 std::shared_ptr<TextureLoader> TextureLoader::getInstance() {
