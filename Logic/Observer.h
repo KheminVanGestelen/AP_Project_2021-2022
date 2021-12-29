@@ -7,6 +7,7 @@
 
 #include <utility>
 
+/// Interface to bundle all Observer Classes.
 class Observer {
 public:
     Observer() = default;

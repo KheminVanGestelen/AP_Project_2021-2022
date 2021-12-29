@@ -12,6 +12,19 @@
 #include "Bonus.h"
 #include <utility>
 
+/// Class that models a Platform in the world.
+/// \param visible : bool : true if the platform is visible, false otherwise.
+/// \param usableBonus : bool : true if the platform has a usable Bonus, false otherwise.
+/// \param fragile : bool : true if it's a fragile Platform, false otherwise.
+/// \param movingHorizontal : bool : true if the platform can move horizontal, false otherwise.
+/// \param movingVertical : bool : true if the platform can move vertical, false otherwise.
+/// \param horizontalRange : pair<float, float> : the range (minX, maxX) over which a horizontal moving Platform can move.
+/// \param verticalRange : pair<float, float> : the range (minY, maxY) over which a vertical moving Platform can move.
+/// \param xSpeed : float : the horizontal movement speed of the Platform.
+/// \param ySpeed : float : the vertical movement speed of the Platform.
+/// \param baseSpeed : float : the base movement speed of the Platform.
+/// \param view : PlatformView : the visual respresentation of the Platform.
+/// \param bonus : Bonus : the Bonus that is located on the platform.
 class Platform : public Entity {
     bool visible;
     bool usableBonus;
@@ -40,11 +53,16 @@ public:
     bool isMovingHorizontal() const;
     bool isMovingVertical() const;
     float getYSpeed() const;
+
+    /// Returns the vertical movement range of the Platform and a boolean value.
+    /// The boolean value indicates if the vertical range is valid to use (true) or not valid (false).
     std::pair<std::pair<float, float>, bool> getVerticalRange() const;
 
     void setUsableBonus(bool b);
     void setVisible(bool b);
 
+    /// Updates the Platform.
+    /// \param worldWidth : float : the width of the world.
     void update(float worldWidth);
 
 };

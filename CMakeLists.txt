@@ -6,11 +6,11 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(AP-Project-2021-2022 main.cpp Visuals/Game.h Visuals/Game.cpp Logic/Background.h Logic/Background.cpp
         Logic/Bonus.h Logic/Bonus.cpp Logic/Camera.h Logic/Camera.cpp Logic/Entity.h Logic/Entity.cpp Logic/Platform.h
         Logic/Platform.cpp Logic/Player.h Logic/Player.cpp Logic/Random.cpp Logic/Random.h Logic/Stopwatch.h
-        Logic/Stopwatch.cpp Logic/World.h Logic/World.cpp Logic/Vector2D.cpp Logic/Vector2D.h Logic/AbstractFactory.cpp
-        Logic/AbstractFactory.h Visuals/ConcreteFactory.cpp Visuals/ConcreteFactory.h Logic/Observer.cpp
-        Logic/Observer.h Visuals/EntityView.cpp Visuals/EntityView.h Visuals/PlatformView.cpp Visuals/PlatformView.h
-        Visuals/PlayerView.cpp Visuals/PlayerView.h Visuals/BonusView.cpp Visuals/BonusView.h Logic/Score.cpp
-        Logic/Score.h Visuals/TextureLoader.cpp Visuals/TextureLoader.h Visuals/BackgroundView.cpp Visuals/BackgroundView.h Visuals/ScoreView.cpp Visuals/ScoreView.h)
+        Logic/Stopwatch.cpp Logic/World.h Logic/World.cpp Logic/Vector2D.cpp Logic/Vector2D.h Logic/AbstractFactory.h
+        Visuals/ConcreteFactory.cpp Visuals/ConcreteFactory.h Logic/Observer.h Visuals/EntityView.cpp
+        Visuals/EntityView.h Visuals/PlatformView.cpp Visuals/PlatformView.h Visuals/PlayerView.cpp Visuals/PlayerView.h
+        Visuals/BonusView.cpp Visuals/BonusView.h Logic/Score.cpp Logic/Score.h Visuals/TextureLoader.cpp
+        Visuals/TextureLoader.h Visuals/BackgroundView.cpp Visuals/BackgroundView.h Visuals/ScoreView.cpp Visuals/ScoreView.h)
 
 include_directories(/usr/include c:/SFML/include)
 

@@ -9,10 +9,16 @@
 #include "Entity.h"
 #include <cmath>
 
+/// Class that models the Camera in the world.
+/// \param camWidth : float : the width of the camera.
+/// \param camHeight : float : the height of the camera.
+/// \param camCenter : float : the height in the world at which the center of the camera is located.
+/// \param camBottom : float : the height in the world at which the bottom edge of the camera is located.
+/// \param camSpeed : float : the vertical movement speed of the camera.
 class Camera {
     float camWidth;
     float camHeight;
-    float camCenterHeight;
+    float camCenter;
     float camBottom;
     float camSpeed;
 public:
@@ -24,11 +30,18 @@ public:
     float centerHeight() const;
     float bottomHeight() const;
     float speed() const;
-    void setCenterHeight(float c);
 
+    /// Returns the coordinates of the given entity relative to the window's coordinate system.
+    /// \param e : Entity : the entity for which the window coordinates are calculated.
+    /// \return : pair<float, float> : the coordinates (x, y) of the entity in the window's coordinate system.
     std::pair<float, float> getWindowCoord(const Entity& e) const;
 
+    /// Updates the camera.
+    /// \param playerHeight : float : the world height of the player
+    /// \param playerYSpeed : the vertical movement speed of the player
     void update(float playerHeight, float playerYSpeed);
+
+    /// Resets the camera.
     void reset();
 
 };

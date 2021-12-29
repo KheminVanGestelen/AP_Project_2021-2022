@@ -8,6 +8,11 @@
 #include <utility>
 #include "Vector2D.h"
 
+/// Class that models an Entity in the world.
+/// \param x : float : the x position of the Entity in the world.
+/// \param y : float : the y position of the Entity in the world.
+/// \param width : float : the width of the Entity
+/// \param height : float : the height of the Entity
 class Entity {
     float x;
     float y;
@@ -24,6 +29,8 @@ public:
     void setX(float i);
     void setY(float i);
 
+    /// Moves the Entity over the given 2D vector.
+    /// \param m : Vector2D : the vector over which the Bonus is moved.
     void move(Vector2D m);
 };
 

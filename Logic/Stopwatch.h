@@ -8,6 +8,7 @@
 #include <chrono>
 #include <memory>
 
+/// Singleton class that measures time.
 class Stopwatch {
     static std::shared_ptr<Stopwatch> instance;
 
@@ -15,14 +16,17 @@ class Stopwatch {
     Stopwatch();
 
 public:
+    /// Returns the singleton instance or creates a new one if it's invoked the first time.
+    /// \return shared_prt<Stopwatch> the singleton Stopwatch instance
     static std::shared_ptr<Stopwatch> getInstance();
 
-    long long int timeInSeconds();
+    /// Returns the elapsed time since last reset in millisecons(ms)
+    /// \return long long int : elapsed time in ms
     long long int timeInMilliseconds();
-    long long int timeInMicroseconds();
+
+    /// Resets the stopwatch and returns the elapsed time in milliseconds since last reset.
+    /// \return long long int : elapsed time in ms
     long long int reset();
-
-
 };
 
 

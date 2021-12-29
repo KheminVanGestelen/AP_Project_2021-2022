@@ -12,22 +12,10 @@ std::shared_ptr<Stopwatch> Stopwatch::getInstance() {
     return instance;
 }
 
-long long int Stopwatch::timeInSeconds() {
-    auto now = std::chrono::steady_clock::now();
-
-    return std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
-}
-
 long long int Stopwatch::timeInMilliseconds() {
     auto now = std::chrono::steady_clock::now();
 
     return std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count();
-}
-
-long long int Stopwatch::timeInMicroseconds() {
-    auto now = std::chrono::steady_clock::now();
-
-    return std::chrono::duration_cast<std::chrono::microseconds>(now - start).count();
 }
 
 long long int Stopwatch::reset() {

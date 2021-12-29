@@ -4,9 +4,9 @@
 
 #include "Camera.h"
 
-Camera::Camera() : camWidth(0.0), camHeight(0.0), camCenterHeight(0.0), camBottom(0.0) , camSpeed(0.0){}
+Camera::Camera() : camWidth(0.0), camHeight(0.0), camCenter(0.0), camBottom(0.0) , camSpeed(0.0){}
 
-Camera::Camera(float w, float h) : camWidth(w), camHeight(h), camCenterHeight(h/2), camBottom(0.0), camSpeed(0.0){}
+Camera::Camera(float w, float h) : camWidth(w), camHeight(h), camCenter(h / 2), camBottom(0.0), camSpeed(0.0){}
 
 float Camera::width() const {
     return camWidth;
@@ -17,7 +17,7 @@ float Camera::height() const {
 }
 
 float Camera::centerHeight() const {
-    return camCenterHeight;
+    return camCenter;
 }
 
 float Camera::bottomHeight() const {
@@ -28,32 +28,28 @@ float Camera::speed() const {
     return camSpeed;
 }
 
-void Camera::setCenterHeight(float c) {
-    camCenterHeight = c;
-}
-
 std::pair<float, float> Camera::getWindowCoord(const Entity& e) const {
     std::pair<float, float> wCoord = {0,0};
     wCoord.first = (camWidth/2) + e.X() - (e.getWidth()/2);
-    wCoord.second = (camHeight/2) - (e.Y() - camCenterHeight) - e.getHeight();
+    wCoord.second = (camHeight/2) - (e.Y() - camCenter) - e.getHeight();
 
     return wCoord;
 }
 
 void Camera::update(float playerHeight, float playerYSpeed) {
-    camCenterHeight += camSpeed;
-    camBottom = camCenterHeight - (camHeight/2);
+    camCenter += camSpeed;
+    camBottom = camCenter - (camHeight / 2);
 
-    if (playerHeight >= camCenterHeight && playerYSpeed > 0){
+    if (playerHeight >= camCenter && playerYSpeed > 0){
         camSpeed = playerYSpeed;
     }
-    if (playerHeight < camCenterHeight) {
+    if (playerHeight < camCenter) {
         camSpeed = 0.0;
     }
 }
 
 void Camera::reset() {
-    camCenterHeight = camHeight/2;
+    camCenter = camHeight / 2;
     camBottom = 0.0;
     camSpeed = 0.0;
 }
