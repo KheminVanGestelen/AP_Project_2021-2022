@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="AP-Project-2021-2022"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="AP-Project-2021-2022">
+				<Option output="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/AP-Project-2021-2022.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include"/>
+					<Add directory="c:/SFML/include"/>
+					<Add directory="/SFML/include"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 AP-Project-2021-2022"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="AP-Project-2021-2022/fast">
+				<Option output="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/AP-Project-2021-2022.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include"/>
+					<Add directory="c:/SFML/include"/>
+					<Add directory="/SFML/include"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 AP-Project-2021-2022/fast"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/AbstractFactory.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Background.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Background.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Bonus.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Bonus.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Camera.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Camera.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Entity.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Entity.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Observer.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Platform.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Platform.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Player.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Player.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Random.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Random.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Score.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Score.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Stopwatch.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Stopwatch.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Vector2D.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/Vector2D.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/World.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Logic/World.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/BackgroundView.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/BackgroundView.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/BonusView.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/BonusView.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/ConcreteFactory.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/ConcreteFactory.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/EntityView.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/EntityView.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/Game.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/Game.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/PlatformView.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/PlatformView.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/PlayerView.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/PlayerView.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/ScoreView.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/ScoreView.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/TextureLoader.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/Visuals/TextureLoader.h">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/main.cpp">
+			<Option target="AP-Project-2021-2022"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake_modules/FindSFML.cmake">
+			<Option virtualFolder="CMake Files\cmake_modules\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,3 @@
+C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/CMakeFiles/AP-Project-2021-2022.dir
+C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Khemin/CLionProjects/AP/AP_Project_2021-2022/cmake-build-debug/CMakeFiles/rebuild_cache.dir

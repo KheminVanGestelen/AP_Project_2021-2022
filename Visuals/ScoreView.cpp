@@ -5,7 +5,7 @@
 #include "ScoreView.h"
 
 ScoreView::ScoreView() {
-    if (!scoreFont.loadFromFile("Assets/Sticky_Notes.ttf"))
+    if (!scoreFont.loadFromFile("../Assets/Sticky_Notes.ttf"))
         std::cerr << "Could not load font from file" << std::endl;
     else {
         scoreText = sf::Text("Score: 0", scoreFont);
