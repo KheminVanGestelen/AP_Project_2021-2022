@@ -59,7 +59,7 @@ Platform World::generateRandomPlatform() {
         bonusPair = std::pair<bool, Bonus>(false, Bonus());
     }
 
-    return factory->createPlatform(randX, randY, camera.centerHeight(), bonusPair);
+    return factory->createPlatform(randX, randY, bonusPair);
 }
 
 void World::initializePlayer() {

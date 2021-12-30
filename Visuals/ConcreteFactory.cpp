@@ -18,11 +18,11 @@ Player ConcreteFactory::createPlayer() {
     return {0.0, 0.0, 48.0, 48.0, pView};
 }
 
-Platform ConcreteFactory::createPlatform(float x, float y, float heightInWorld, const std::pair<bool, Bonus>& b) {
+Platform ConcreteFactory::createPlatform(float x, float y, const std::pair<bool, Bonus>& b) {
     sf::IntRect box = sf::IntRect(0,16,48,16);
     PlatformView plView = PlatformView(textures["Platform"], box);
 
-    return {x, y, 48.0, 16.0, plView, heightInWorld, b};
+    return {x, y, 48.0, 16.0, plView, b};
 }
 
 Background ConcreteFactory::createBackground(float y, std::string bgType) {

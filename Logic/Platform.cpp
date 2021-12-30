@@ -22,17 +22,17 @@ Platform::Platform() : Entity(0.0, 0.0, 1.0, 1.0) , view(PlatformView()), bonus(
 }
 
 Platform::Platform(float x, float y, float w, float h, PlatformView plView,
-                   float heightInWorld, const std::pair<bool, Bonus>& b) : Entity(x, y, w, h) , view(std::move(plView)), bonus(b.second){
+                   const std::pair<bool, Bonus>& b) : Entity(x, y, w, h) , view(std::move(plView)), bonus(b.second){
     visible = true;
     usableBonus = b.first;
 
     int r1 = Random::getInstance()->randInt(0, 100);
-    if (r1 >= 70 && r1 < 80 && heightInWorld > 5000) {
+    if (r1 >= 70 && r1 < 80 && y > 5000) {
         fragile = false;
         movingHorizontal = true;
         movingVertical = false;
     }
-    else if (r1 >= 80 && r1 < 90 && heightInWorld > 10000) {
+    else if (r1 >= 80 && r1 < 90 && y > 10000) {
         fragile = false;
         movingHorizontal = false;
         movingVertical = true;

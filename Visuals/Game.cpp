@@ -24,7 +24,7 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool pressed) {
     if(key == sf::Keyboard::D) {
         world.player.setMovingRight(pressed);
     }
-    if(key == sf::Keyboard::R && !pressed) {
+    if(key == sf::Keyboard::R && !pressed && gameOver) {
         reset();
     }
 }
@@ -103,7 +103,7 @@ void Game::render() {
 }
 
 void Game::run() {
-    shared_ptr<Stopwatch> clock = Stopwatch::getInstance();
+    std::shared_ptr<Stopwatch> clock = Stopwatch::getInstance();
     long long int timeSinceUpdate = 0;
 
     while (mainWindow.isOpen()) {

@@ -7,6 +7,7 @@
 
 #include "EntityView.h"
 
+/// Class that models the visual representation of a Background element.
 class BackgroundView : public EntityView {
 public:
     BackgroundView();

@@ -31,7 +31,8 @@ public:
     float bottomHeight() const;
     float speed() const;
 
-    /// Returns the coordinates of the given entity relative to the window's coordinate system.
+    /// Returns the coordinates of the given entity relative to the window's coordinate system
+    /// (origin in the top left corner of the window).
     /// \param e : Entity : the entity for which the window coordinates are calculated.
     /// \return : pair<float, float> : the coordinates (x, y) of the entity in the window's coordinate system.
     std::pair<float, float> getWindowCoord(const Entity& e) const;

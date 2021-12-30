@@ -45,7 +45,7 @@ public:
     Bonus bonus;
 
     Platform();
-    Platform(float x, float y, float w, float h, PlatformView plView, float heightInWorld, const std::pair<bool, Bonus>& b);
+    Platform(float x, float y, float w, float h, PlatformView plView, const std::pair<bool, Bonus>& b);
 
     bool hasUsableBonus() const;
     bool isVisible() const;

@@ -9,6 +9,9 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 
+/// Class that models the visual representation of the Score
+/// \param scoreFont : sf::Font : font used by the scoreText to display the Score
+/// \param scoreText : sf::Text : SFML Text class that contains a string displaying the Score
 class ScoreView {
     sf::Font scoreFont;
 public:
@@ -16,6 +19,8 @@ public:
 
     ScoreView();
 
+    /// Updates the string of scoreText to the given string s.
+    /// \param s : string : new string to set
     void updateString(const std::string& s);
 };
 

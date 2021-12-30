@@ -10,11 +10,12 @@
 #include "Bonus.h"
 #include "Background.h"
 
+/// Abstract interface to create Entities in the world.
 class AbstractFactory {
 
 public:
     virtual Player createPlayer() = 0;
-    virtual Platform createPlatform(float x, float y, float heightInWorld, const std::pair<bool, Bonus>& b) = 0;
+    virtual Platform createPlatform(float x, float y, const std::pair<bool, Bonus>& b) = 0;
     virtual Background createBackground(float y, std::string bgType) = 0;
     virtual Bonus createBonus(float x, float y) = 0;
 };

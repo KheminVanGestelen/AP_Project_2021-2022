@@ -8,6 +8,8 @@
 #include "../Logic/Observer.h"
 #include "SFML/Graphics.hpp"
 
+/// Class that models the visual representation for an Entity in the world
+/// \param sprite : sf::Sprite : An SFML Sprite that visualizes the Entity
 class EntityView : public Observer {
 public:
     sf::Sprite sprite;
@@ -16,6 +18,9 @@ public:
     explicit EntityView(const sf::Texture& texture);
     EntityView(const sf::Texture& texture, const sf::IntRect& rect);
 
+    /// Changes the position of the sprite attribute to newPos. The position lies within the window's coordinate system
+    /// (origin in the top left corner of the window).
+    /// \param newPos : pair<float, float> : new position of sprite
     virtual void setSpritePos(std::pair<float, float> newPos);
 };
 
