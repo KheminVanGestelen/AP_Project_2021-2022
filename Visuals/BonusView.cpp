@@ -17,8 +17,8 @@ void BonusView::update() {
         frameCounter -= 1;
 
     sf::IntRect prevBox = sprite.getTextureRect();
-    if (prevBox.left == 64 && frameCounter == 0)
+    if (prevBox.left == 32 && frameCounter == 0)
         sprite.setTextureRect(sf::IntRect(0,0,32,32));
-    if (prevBox.left != 64 && frameCounter == 0)
+    if (prevBox.left != 32 && frameCounter == 0)
         sprite.setTextureRect(sf::IntRect(prevBox.left+32,prevBox.top,prevBox.width,prevBox.height));
 }

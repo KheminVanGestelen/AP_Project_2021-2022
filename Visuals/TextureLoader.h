@@ -29,7 +29,7 @@ public:
 
     /// Getter for the textureMap attribute
     /// \return map<string, sf::Texture> : textureMap
-    std::map<std::string, sf::Texture> textures();
+    std::map<std::string, sf::Texture> textures() const;
 
 };
 

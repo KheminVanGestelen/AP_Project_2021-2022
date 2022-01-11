@@ -74,6 +74,6 @@ std::shared_ptr<TextureLoader> TextureLoader::getInstance() {
     return instance;
 }
 
-std::map<std::string, sf::Texture> TextureLoader::textures() {
+std::map<std::string, sf::Texture> TextureLoader::textures() const{
     return textureMap;
 }

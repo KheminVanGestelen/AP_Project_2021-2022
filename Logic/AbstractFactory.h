@@ -12,7 +12,6 @@
 
 /// Abstract interface to create Entities in the world.
 class AbstractFactory {
-
 public:
     virtual Player createPlayer() = 0;
     virtual Platform createPlatform(float x, float y, const std::pair<bool, Bonus>& b) = 0;

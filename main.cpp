@@ -1,8 +1,4 @@
 #include "Visuals/Game.h"
-#include "Logic/Stopwatch.h"
-#include "Logic/Random.h"
-#include "Visuals/TextureLoader.h"
-#include <iostream>
 
 std::shared_ptr<Stopwatch> Stopwatch::instance = nullptr;
 std::shared_ptr<Random> Random::instance  = nullptr;
