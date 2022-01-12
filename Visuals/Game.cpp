@@ -4,8 +4,8 @@
 
 #include "Game.h"
 
-Game::Game() : mainWindow(sf::VideoMode(750, 750) , "Is working?"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())),
-               world(World(factory, Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y))) {
+Game::Game(int highestScore) : mainWindow(sf::VideoMode(750, 750) , "SPACE JUMP"), factory(std::make_shared<ConcreteFactory>(ConcreteFactory())),
+               world(World(factory, Camera((float) mainWindow.getSize().x,(float) mainWindow.getSize().y), highestScore)) {
     textures = TextureLoader::getInstance()->textures();
     world.initializePlayer();
     world.initializePlatforms();
@@ -18,7 +18,7 @@ Game::Game() : mainWindow(sf::VideoMode(750, 750) , "Is working?"), factory(std:
 }
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool pressed) {
-    if(key == sf::Keyboard::Q) {
+    if(key == sf::Keyboard::A) {
         world.player.setMovingLeft(pressed);
     }
     if(key == sf::Keyboard::D) {
@@ -64,6 +64,11 @@ void Game::update() {
     world.update();
     if (world.player.Y() < world.camera.bottomHeight() - 50) {
         gameOver = true;
+        world.score.view.updateString(world.score.getHighScoreString());
+        std::ofstream ofs;
+        ofs.open("../Assets/HighScore.txt", std::ofstream::trunc);
+        ofs << world.score.getHighScore();
+        ofs.close();
     }
 }
 
@@ -71,6 +76,7 @@ void Game::render() {
     if (gameOver) {
         mainWindow.clear();
         mainWindow.draw(gameOverScreen);
+        mainWindow.draw(world.score.view.scoreText);
         mainWindow.display();
     }
     else {

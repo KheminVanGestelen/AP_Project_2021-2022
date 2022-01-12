@@ -4,7 +4,7 @@
 
 #include "World.h"
 
-World::World(std::shared_ptr<AbstractFactory> fact, Camera cam) : factory(std::move(fact)), camera(cam), score(Score()){
+World::World(std::shared_ptr<AbstractFactory> fact, Camera cam, int highestScore) : factory(std::move(fact)), camera(cam), score(Score(highestScore)){
     difficulty = 0.1;
     diffBreakpoint = 2500.0;
     lastJumpLoc = {0,0};
@@ -162,7 +162,7 @@ void World::update() {
     }
 
     if (camera.speed() > 0.0) {
-        score.increase(std::floor(camera.speed()/5));
+        score.increase(std::floor(camera.speed()/3));
     }
 
     camera.update(player.Y(), player.getYSpeed());

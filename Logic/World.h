@@ -42,7 +42,7 @@ public:
     Score score;
     Camera camera;
 
-    World(std::shared_ptr<AbstractFactory> fact, Camera cam);
+    World(std::shared_ptr<AbstractFactory> fact, Camera cam, int highestScore = 0);
 
     float getGravity() const;
     float getDifficulty() const;

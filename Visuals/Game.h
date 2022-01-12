@@ -12,6 +12,7 @@
 #include "../Logic/World.h"
 #include "../Logic/Vector2D.h"
 #include "TextureLoader.h"
+#include <fstream>
 
 /// Class that models the Game. Handles input. Contains main game loop. Regulates game speed. Renders to window.
 /// \param mainWindow : sf::RenderWindow : SFML RenderWindow class to render all visual elements to.
@@ -32,7 +33,7 @@ class Game {
     std::shared_ptr<ConcreteFactory> factory;
     World world;
 public:
-    Game();
+    explicit Game(int highestScore);
 
     /// Main game loop.
     void run();

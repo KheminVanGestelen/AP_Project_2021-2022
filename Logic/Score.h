@@ -13,10 +13,14 @@
 /// \param view : ScoreView : the visual representation of the Score
 class Score : public Observer {
     int score;
+    int highScore;
 public:
     ScoreView view;
 
     Score();
+    explicit Score(int highestScore);
+
+    int getHighScore() const;
 
     /// Increases the score by given integer i
     /// \param i : integer : the amount of points that is added to the Score.
@@ -28,6 +32,9 @@ public:
 
     /// Returns a string that contains the current score. The string has following form : "Score: [score]"
     std::string getScoreString() const;
+
+    /// Returns a string that contains the highest score. The string has following form : "Highscore: [highScore]"
+    std::string getHighScoreString() const;
 
     /// Resets the Score back to 0.
     void reset();
